@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_item_rx"
+            android:icon="@mipmap/ic_launcher"
+            android:title="RxJava"
+            >
+        </item>
+
+        <item
+            android:id="@+id/nav_item_re"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Retrofit"
+            >
+        </item>
+
+        <item
+            android:id="@+id/nav_item_rxre"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Rx+Re"
+            >
+        </item>
+
+
+        <item
+            android:id="@+id/nav_item_md"
+            android:icon="@mipmap/ic_launcher"
+            android:title="Md Widget"
+            >
+        </item>
+
+        <item
+            android:id="@+id/nav_item_about"
+            android:icon="@mipmap/ic_launcher"
+            android:title="About"
+            >
+        </item>
+    </group>
+
+
+
+</menu>
