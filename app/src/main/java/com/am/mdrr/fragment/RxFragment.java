@@ -1,4 +1,4 @@
-package fragment;
+package com.am.mdrr.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,13 +12,13 @@ import com.am.mdrr.R;
 /**
  * Created by AM on 2016/7/15.
  */
-public class RxReFragment extends Fragment {
+public class RxFragment extends Fragment {
 
     private View rootView;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_rxre,null);
+        rootView = inflater.inflate(R.layout.fragment_rx,null);
         return rootView;
     }
 }

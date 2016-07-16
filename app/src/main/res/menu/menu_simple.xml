@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity" >
+    <item android:id="@+id/action_ball"
+        android:title="篮球"
+        android:orderInCategory="80"
+        android:icon="@mipmap/ic1"
+        app:showAsAction="ifRoom" />
+    <item android:id="@+id/action_tip"
+        android:title="提醒"
+        android:orderInCategory="90"
+        android:icon="@mipmap/ic2"
+        app:showAsAction="ifRoom" />
+
+    <item android:id="@+id/action_menu"
+        android:title="设置"
+        android:orderInCategory="90"
+        android:icon="@mipmap/ic3"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:title="其他1"
+        android:orderInCategory="90"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:title="其他2"
+        android:orderInCategory="90"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:title="其他3"
+        android:orderInCategory="90"
+        android:icon="@mipmap/ic_launcher"
+        app:showAsAction="ifRoom" />
+</menu>

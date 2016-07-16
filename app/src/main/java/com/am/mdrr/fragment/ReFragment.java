@@ -1,4 +1,4 @@
-package fragment;
+package com.am.mdrr.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

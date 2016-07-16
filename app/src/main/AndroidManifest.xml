@@ -15,6 +15,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".mdsimple.SnackbarActivity"></activity>
+        <activity android:name=".mdsimple.CardViewActivity"/>
+        <activity android:name=".mdsimple.TextInputActivity"/>
+        <activity android:name=".mdsimple.FloatingActionButtonActivity"/>
+        <activity android:name=".mdsimple.ToolbarActivity"/>
+        <activity android:name=".mdsimple.ThreeOneActivity"/>
+        <activity android:name=".mdsimple.TabLayoutActivity"/>
     </application>
 
 </manifest>

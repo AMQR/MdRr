@@ -10,14 +10,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import fragment.AboutFragment;
-import fragment.MdFragment;
-import fragment.ReFragment;
-import fragment.RxFragment;
-import fragment.RxReFragment;
+import com.am.mdrr.fragment.AboutFragment;
+import com.am.mdrr.fragment.MdFragment;
+import com.am.mdrr.fragment.ReFragment;
+import com.am.mdrr.fragment.RxFragment;
+import com.am.mdrr.fragment.RxReFragment;
 
 public class MainActivity extends AppCompatActivity {
 

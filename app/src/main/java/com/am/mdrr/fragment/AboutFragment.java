@@ -1,4 +1,4 @@
-package fragment;
+package com.am.mdrr.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,13 +12,13 @@ import com.am.mdrr.R;
 /**
  * Created by AM on 2016/7/15.
  */
-public class MdFragment extends Fragment {
+public class AboutFragment extends Fragment {
 
     private View rootView;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_md,null);
+        rootView = inflater.inflate(R.layout.fragment_about,null);
         return rootView;
     }
 }
