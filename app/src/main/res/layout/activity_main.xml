@@ -50,6 +50,4 @@
         app:headerLayout="@layout/nav_head"
         app:menu="@menu/nav_main_part"
         />
-
-
 </android.support.v4.widget.DrawerLayout>

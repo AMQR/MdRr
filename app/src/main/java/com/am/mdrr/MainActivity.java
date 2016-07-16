@@ -59,8 +59,12 @@ public class MainActivity extends AppCompatActivity {
 
         // 菜单的正式部分
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            //用于辨别此前是否已有选中条目,多组，所以需要中间MenuItem
+            MenuItem preMenuItem;
+
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
+
                 switch (menuItem.getItemId()){
                     case R.id.nav_item_rx:
                         switchToRx();
@@ -78,8 +82,11 @@ public class MainActivity extends AppCompatActivity {
                         switchToAbout();
                         break;
                 }
-                menuItem.setChecked(true); // 把当前菜单的item置为选中状态
-                mDrawerLayout.closeDrawers(); // 抽屉合起来，隐藏菜单
+                if(preMenuItem!=null)
+                    preMenuItem.setChecked(false);
+                menuItem.setChecked(true);
+                mDrawerLayout.closeDrawers();
+                preMenuItem=menuItem; // 将实际item赋予中间item
 
                 // 默认返回flase，自己实现逻辑需要返回true
                 return true;
@@ -112,5 +119,4 @@ public class MainActivity extends AppCompatActivity {
         supportFragmentManager.beginTransaction().replace(R.id.mFrameLayout, new AboutFragment()).commit();
         mToolbar.setTitle("About");
     }
-
 }
