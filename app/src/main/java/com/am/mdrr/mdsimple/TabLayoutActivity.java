@@ -9,10 +9,12 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.am.mdrr.R;
 import com.am.mdrr.fragment.DetailFragment;
@@ -29,6 +31,8 @@ import java.util.Scanner;
 public class TabLayoutActivity  extends AppCompatActivity {
 
     private ViewPager mViewPager;
+    private TextView mTvTip;
+    private Object tip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,8 @@ public class TabLayoutActivity  extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getTip();
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,13 +50,12 @@ public class TabLayoutActivity  extends AppCompatActivity {
             }
         });
 
-
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbar.setTitle("海贼王");
         collapsingToolbar.setExpandedTitleColor(Color.BLUE);
         collapsingToolbar.setCollapsedTitleTextColor(Color.WHITE);
 
-        ImageView ivImage = (ImageView)findViewById(R.id.ivImage);
+        ImageView ivImage = (ImageView) findViewById(R.id.ivImage);
         ivImage.setImageResource(R.mipmap.lf);
 
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -84,6 +89,25 @@ public class TabLayoutActivity  extends AppCompatActivity {
             e.printStackTrace();
         }
         return new Scanner(is).useDelimiter("\\Z").next();
+    }
+
+    public void getTip() {
+        mTvTip = (TextView) findViewById(R.id.mTvTip);
+        mTvTip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(TabLayoutActivity.this);
+                // 设置标题
+                builder.setTitle("提示：");
+                // 设置描述信息
+                builder.setMessage("TabLayout提供了一个水平的布局用来展示Tabs。\n" +
+                        "TabLayout通过 newTab() 可以创建多个tab标签。\n" +
+                        "可以通过setText()和setIcon分别设置文本和icon，最后通过addTab将newTab处的选项卡添加上去即可 。\n" +
+                        "但是这个是单一的选项卡使用 一般使用选项卡我们都是和viewpager相结合使用的。"
+                );
+                builder.show();
+            }
+        });
     }
 
 

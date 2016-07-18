@@ -17,10 +17,10 @@
         >
 
         <TextView
-            android:id="@+id/mTvDiy"
+            android:id="@+id/mTvTip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DIY"
+            android:text="Tip"
             android:textColor="#fff"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"

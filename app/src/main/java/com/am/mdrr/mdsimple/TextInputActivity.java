@@ -53,14 +53,11 @@ public class TextInputActivity extends AppCompatActivity {
 
             }
         });
-
-
-
     }
 
     private void other() {
         toolbar = (Toolbar) findViewById(R.id.mToolbar);
-        toolbar.setTitle("CardView");
+        toolbar.setTitle("TextInput");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -78,9 +75,7 @@ public class TextInputActivity extends AppCompatActivity {
                 // 设置标题
                 builder.setTitle("提示：");
                 // 设置描述信息
-                builder.setMessage("可以将CardView看做是FrameLayout在自身之上添加了圆角和阴影效果。" +
-                        "\nCardView被包装为一种布局，并且经常在ListView和RecyclerView的Item布局中，作为一种容器使用。"
-                );
+                builder.setMessage("TextInputLayout是一个能够把EditText包裹在当中的一个布局，当输入文字时，它可以把Hint文字飘到EditText的上方。");
                 builder.show();
             }
         });

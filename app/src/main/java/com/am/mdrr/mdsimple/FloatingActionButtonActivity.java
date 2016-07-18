@@ -47,7 +47,7 @@ public class FloatingActionButtonActivity extends AppCompatActivity {
 
     private void other() {
         toolbar = (Toolbar) findViewById(R.id.mToolbar);
-        toolbar.setTitle("CardView");
+        toolbar.setTitle("FloatingActionButton");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -65,8 +65,17 @@ public class FloatingActionButtonActivity extends AppCompatActivity {
                 // 设置标题
                 builder.setTitle("提示：");
                 // 设置描述信息
-                builder.setMessage("可以将CardView看做是FrameLayout在自身之上添加了圆角和阴影效果。" +
-                        "\nCardView被包装为一种布局，并且经常在ListView和RecyclerView的Item布局中，作为一种容器使用。"
+                builder.setMessage("FloatingActionButton是继承至ImageView，所以FloatingActionButton拥有ImageView的所有属性。" +
+                        "\nCoordinatorLayout可以用来配合FloatingActionButton浮动按钮，设置app：layout_anchor和app:layout_anchorGravity构建出特定的位置与效果的FloatingActionButton。" +
+                        "* app:backgroundTint - 设置FAB的背景颜色。\n" +
+                        "* app:rippleColor - 设置FAB点击时的背景颜色。\n" +
+                        "* app:borderWidth - 该属性尤为重要，如果不设置0dp，那么在4.1的sdk上FAB会显示为正方形，而且在5.0以后的sdk没有阴影效果。所以设置为borderWidth=\"0dp\"。\n" +
+                        "* app:elevation - 默认状态下FAB的阴影大小。\n" +
+                        "* app:pressedTranslationZ - 点击时候FAB的阴影大小。\n" +
+                        "* app:fabSize - 设置FAB的大小，该属性有两个值，分别为normal和mini，对应的FAB大小分别为56dp和40dp。\n" +
+                        "* src - 设置FAB的图标，Google建议符合Design设计的该图标大小为24dp。\n" +
+                        "* app:layout_anchor - 设置FAB的锚点，即以哪个控件为参照点设置位置。\n" +
+                        "* app:layout_anchorGravity - 设置FAB相对锚点的位置，值有 bottom、center、right、left、top等。"
                 );
                 builder.show();
             }
