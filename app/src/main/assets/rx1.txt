@@ -1,0 +1,45 @@
+public class MainActivity extends Activity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Observer<String> observer = new Observer<String>() {
+            // 观察者的三个事件 onNext   onCompleted    onError
+            @Override
+            public void onNext(String s) {
+                System.out.println("=======我是观察者 Observer 的 onNext 事件，打印参数s：" + s);
+            }
+
+            @Override
+            public void onCompleted() {
+                System.out.println("=======我是观察者 Observer 的 onCompleted 事件，无参数");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                System.out.println("=======我是观察者 Observer 的 onError 事件，参数 e：" + e);
+            }
+        };
+
+        Observable<String> observable = Observable.create(new Observable.OnSubscribe<String>() {
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+                subscriber.onNext("=======onNext Fist");
+                subscriber.onNext("=======onNext Secind");
+                subscriber.onNext("=======onNext Third");
+
+                subscriber.onStart();
+                subscriber.onCompleted();
+            }
+        });
+        // 被观察者 订阅 观察者   是的，好像是有点别扭，但是还是需要接受
+        observable.subscribe(observer);
+    }
+}
+===========
+打印结果：
+=======我是观察者 Observer 的 onNext 事件，打印参数s：=======onNext Fist
+=======我是观察者 Observer 的 onNext 事件，打印参数s：=======onNext Secind
+=======我是观察者 Observer 的 onNext 事件，打印参数s：=======onNext Third
+=======我是观察者 Observer 的 onCompleted 事件，无参数

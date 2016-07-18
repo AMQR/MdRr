@@ -11,7 +11,7 @@
         android:id="@+id/mTvTip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TIP"
+        android:text="“OP历史正文”"
         android:textColor="@color/white"
         android:paddingLeft="10dp"
         />

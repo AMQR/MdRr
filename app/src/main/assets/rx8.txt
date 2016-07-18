@@ -1,0 +1,72 @@
+所谓变换，就是将事件序列中的对象或整个序列进行加工处理，转换成不同的事件或事件序列
+
+有点晦涩，那我们先来看一个简单的代码，先不进行变换，像之前那样，被观察者和观察者 使用的是相同的数据类型。看代码：
+
+就是一个代码加载图片的小demo
+```
+public class MainActivity extends Activity {
+
+    private ImageView mIv;
+    private int resId = R.mipmap.ic_launcher;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        mIv = (ImageView) findViewById(R.id.mIv);
+        Observable.create(new Observable.OnSubscribe<Integer>() {
+            @Override
+            public void call(Subscriber<? super Integer> subscriber) {
+                subscriber.onNext(R.mipmap.ic_launcher); //R.mipmap.ic_launcher在R里面对应一个int值
+            }
+        }).map(new Func1<Integer, Drawable>() {
+            @Override
+            public Drawable call(Integer integer) {
+
+                Drawable  drawable = ContextCompat.getDrawable(MainActivity.this,integer);
+                return drawable;
+            }
+        }).subscribe(new Subscriber<Drawable>() {
+            @Override
+            public void onCompleted() {
+                System.out.println("=======  onCompleted");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(Drawable drawable) {
+                mIv.setBackgroundDrawable(drawable);
+            }
+        });
+    }
+}
+```
+简洁版
+```
+public class MainActivity extends Activity {
+    private ImageView mIv;
+    private int resId = R.mipmap.ic_launcher;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        mIv = (ImageView) findViewById(R.id.mIv);
+        Observable.just(R.mipmap.ic_launcher)
+                .map(new Func1<Integer, Drawable>() {
+                    @Override
+                    public Drawable call(Integer integer) {
+                        return ContextCompat.getDrawable(MainActivity.this,integer);
+                    }
+                }).subscribe(new Action1<Drawable>() {
+            @Override
+            public void call(Drawable drawable) {
+                mIv.setBackgroundDrawable(drawable);
+            }
+        });
+    }
+}
+```
+

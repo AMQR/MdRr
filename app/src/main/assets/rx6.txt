@@ -1,0 +1,40 @@
+在RxJava 中，Scheduler ——调度器，相当于线程控制器，RxJava 通过它来指定每一段代码应该运行在什么样的线程。RxJava 已经内置了几个 Scheduler ，它们已经适合大多数的使用场景：
+
+1、Schedulers.immediate(): 直接在当前线程运行，相当于不指定线程。这是默认的 Scheduler。
+2、Schedulers.newThread(): 总是启用新线程，并在新线程执行操作。
+3、Schedulers.io(): I/O 操作（读写文件、读写数据库、网络信息交互等）所使用的 Scheduler。行为模式和 newThread() 差不多，区别在于 io() 的内部实现是是用一个无数量上限的线程池，可以重用空闲的线程，因此多数情况下 io() 比 newThread() 更有效率。不要把计算工作放在 io() 中，可以避免创建不必要的线程。
+4、Schedulers.computation(): 计算所使用的 Scheduler。这个计算指的是 CPU 密集型计算，即不会被 I/O 等操作限制性能的操作，例如图形的计算。这个 Scheduler 使用的固定的线程池，大小为 CPU 核数。不要把 I/O 操作放在 computation() 中，否则 I/O 操作的等待时间会浪费 CPU。
+5、AndroidSchedulers.mainThread()， Android 专用AndroidSchedulers.mainThread()，它指定的操作将在 Android 主线程运行。
+
+切换线程/切换调度器
+常用这么几个调度器，那么现在我们只要知道如何切换线程了。
+
+subscribeOn(): 指定 subscribe() 所发生的线程，即 Observable.OnSubscribe 被激活时所处的线程。或者叫做事件产生的线程。
+observeOn(): 指定 Subscriber 所运行在的线程。或者叫做事件消费的线程。
+
+看代码：
+```
+public class MainActivity extends Activity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Observable.just("你", "好", "线", "程")
+                .subscribeOn(Schedulers.io()) // 指定 subscribe() 发生在 IO 线程
+                .observeOn(AndroidSchedulers.mainThread()) // 指定 Subscriber 的回调发生在主线程
+                .subscribe(new Action1<String>() {
+                    @Override
+                    public void call(String str) {
+                        System.out.println("====不完整的观察者  得到的数据："+str);
+                    }
+                });
+    }
+}
+```
+===========
+打印结果：
+====不完整的观察者  得到的数据：你
+====不完整的观察者  得到的数据：好
+====不完整的观察者  得到的数据：线
+====不完整的观察者  得到的数据：程

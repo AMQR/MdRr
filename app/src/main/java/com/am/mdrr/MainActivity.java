@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        switchToRx();
     }
 
     private void switchToRx() {

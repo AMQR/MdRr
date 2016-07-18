@@ -1,0 +1,14 @@
+Scheduler自由控制线程
+observeOn() 消费的线程 可以多次切换
+当使用了多个 subscribeOn() 的时候，只有第一个 subscribeOn() 起作用。
+看代码：
+```
+Observable.just(1, 2, 3, 4) // IO 线程，由 subscribeOn() 指定
+    .subscribeOn(Schedulers.io())
+    .observeOn(Schedulers.newThread())
+    .map(mapOperator) // 新线程，由 observeOn() 指定
+    .observeOn(Schedulers.io())
+    .map(mapOperator2) // IO 线程，由 observeOn() 指定
+    .observeOn(AndroidSchedulers.mainThread)
+    .subscribe(subscriber);  // Android 主线程，由 observeOn() 指定
+```

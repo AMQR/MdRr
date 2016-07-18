@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="256dp"
         android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        app:popupTheme="@style/CoorPicTheme" >
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsing_toolbar"
@@ -36,12 +36,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" >
+                app:popupTheme="@style/CoorPicTheme" >
                 <TextView
                     android:id="@+id/mTvTip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Tip"
+
                     android:textColor="#fff"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"

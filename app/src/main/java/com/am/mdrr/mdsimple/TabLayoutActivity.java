@@ -32,8 +32,6 @@ public class TabLayoutActivity  extends AppCompatActivity {
 
     private ViewPager mViewPager;
     private TextView mTvTip;
-    private Object tip;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

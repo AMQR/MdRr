@@ -75,10 +75,7 @@ public class MdFragment extends Fragment {
                     case 7:
                         startActivity(new Intent(getActivity(), TabLayoutActivity.class));
                         break;
-
-
                 }
-
                 //Toast.makeText(getActivity(),mDatas.get(position).mTvItemName,Toast.LENGTH_SHORT).show();
             }
             @Override
@@ -88,13 +85,8 @@ public class MdFragment extends Fragment {
         });
 
         mRecycView.setAdapter(mRecycAdapter);
-
-
-
         return rootView;
     }
-
-
 
     private void initData() {
         mDatas = new ArrayList<>();
@@ -118,5 +110,4 @@ public class MdFragment extends Fragment {
         widgetBean.mIvPic = R.mipmap.ic_launcher;
         mDatas.add(widgetBean);
     }
-
 }

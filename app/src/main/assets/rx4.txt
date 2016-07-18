@@ -1,0 +1,45 @@
+public class MainActivity extends Activity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Subscriber<String> subscriber = new Subscriber<String>() {
+            // 观察者的三个事件 onNext   onCompleted    onError
+            // 因为是Subscriber,所以有特有的onStart方法
+            @Override
+            public void onNext(String s) {
+                System.out.println("=======我是观察者 Subscriber 的 onNext 事件，打印参数s：" + s);
+            }
+
+            @Override
+            public void onCompleted() {
+                System.out.println("=======我是观察者 Subscriber 的 onCompleted 事件，无参数");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                System.out.println("=======我是观察者 Subscriber 的 onError 事件，参数 e：" + e);
+            }
+
+            @Override
+            public void onStart() {
+                super.onStart();
+                System.out.println("=======我是观察者 Subscriber 特有的 onStart ，无参数");
+            }
+        };
+
+        String[] names = {"Hello","R","x","Java"};
+        Observable<String> observable = Observable.from(names);
+        // 被观察者 订阅 观察者   是的，好像是有点别扭，但是还是需要接受
+        observable.subscribe(subscriber);
+    }
+}
+=========
+打印结果：
+=======我是观察者 Subscriber 特有的 onStart ，无参数
+=======我是观察者 Subscriber 的 onNext 事件，打印参数s：Hello
+=======我是观察者 Subscriber 的 onNext 事件，打印参数s：R
+=======我是观察者 Subscriber 的 onNext 事件，打印参数s：x
+=======我是观察者 Subscriber 的 onNext 事件，打印参数s：Java
+=======我是观察者 Subscriber 的 onCompleted 事件，无参数

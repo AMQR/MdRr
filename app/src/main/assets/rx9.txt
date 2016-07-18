@@ -1,0 +1,70 @@
+flatMap() 的原理是这样的：
+
+使用传入的事件对象创建一个 Observable 对象；
+并不发送这个 Observable, 而是将它激活，于是它开始发送事件（汇集齐统一发送）；
+每一个创建出来的 Observable 发送的事件，都被汇入同一个 Observable ，而这个 Observable 负责将这些事件统一交给 Subscriber 的回调方法。
+（注意：flatMap() 中返回的是个 Observable 对象）
+
+这三个步骤，把事件拆成了两级，通过一组新创建的 Observable 将初始的对象铺平之后通过统一路径分发了下去。而这个铺平就是 flatMap() 所谓的 flat。
+
+```
+public class MainActivity extends Activity {
+
+    private List<ProgrammerBean> mProgrammerBeanList;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        mProgrammerBeanList = new ArrayList<>();
+        ProgrammerBean pg1 = new ProgrammerBean();
+        pg1.name = "风清扬";
+        ArrayList<LanguageDevBean> programmeLanBeenList1 = new ArrayList<>();
+        programmeLanBeenList1.add(new LanguageDevBean("C++"));
+        programmeLanBeenList1.add(new LanguageDevBean("Java"));
+        programmeLanBeenList1.add(new LanguageDevBean("Js"));
+        pg1.proLanList = programmeLanBeenList1;
+        mProgrammerBeanList.add(pg1);
+
+        ProgrammerBean pg2 = new ProgrammerBean();
+        pg2.name = "孙悟空";
+        ArrayList<LanguageDevBean> programmeLanBeenList2 = new ArrayList<>();
+        programmeLanBeenList2.add(new LanguageDevBean("Php"));
+        pg2.proLanList = programmeLanBeenList2;
+        mProgrammerBeanList.add(pg2);
+
+        Subscriber<LanguageDevBean> subscriber = new Subscriber<LanguageDevBean>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(LanguageDevBean programmeLanBean) {
+                System.out.println("==========:"+programmeLanBean.proLanName);
+            }
+        };
+
+
+        Observable.from(mProgrammerBeanList)
+                .flatMap(new Func1<ProgrammerBean, Observable<LanguageDevBean>>() {
+                    @Override
+                    public Observable<LanguageDevBean> call(ProgrammerBean programmerBean) {
+                        return Observable.from(programmerBean.proLanList);
+                    }
+                }).subscribe(subscriber);
+    }
+}
+```
+=========
+打印结果：
+==========:C++
+==========:Java
+==========:Js
+==========:Php
