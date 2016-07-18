@@ -26,6 +26,7 @@
         <activity android:name=".mdsimple.TabLayoutActivity"/>
         <activity android:name=".WebViewActivity"/>
         <activity android:name=".MarkDownActivity"></activity>
+        <activity android:name=".RetrofitSimpleActivity"/>
     </application>
 
 </manifest>
