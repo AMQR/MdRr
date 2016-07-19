@@ -44,6 +44,8 @@ public class MainActivity extends Activity {
     }
 }
 ```
+
+
 简洁版
 ```
 public class MainActivity extends Activity {
@@ -70,3 +72,4 @@ public class MainActivity extends Activity {
 }
 ```
 
+完

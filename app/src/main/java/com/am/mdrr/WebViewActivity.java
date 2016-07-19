@@ -7,10 +7,13 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
+import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+
+import com.amqr.loadhelplib.LoadHelpView;
 
 /**
  * Created by AM on 2016/7/18.
@@ -21,6 +24,8 @@ public class WebViewActivity extends AppCompatActivity {
     private WebView mWebView;
     private String loadUrl;
     private String title;
+    private LoadHelpView loadHelpView;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +44,7 @@ public class WebViewActivity extends AppCompatActivity {
 
     private void loadWev() {
         mWebView = (WebView) findViewById(R.id.mWebView);
+        loadHelpView = new LoadHelpView(mWebView);
 
         //支持javascript
         mWebView.getSettings().setJavaScriptEnabled(true);
@@ -61,14 +67,17 @@ public class WebViewActivity extends AppCompatActivity {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
                 return super.shouldOverrideUrlLoading(view, url);
+
             }
             @Override
             public void onPageStarted(WebView view, String url, Bitmap favicon) {
                 super.onPageStarted(view, url, favicon);
+                loadHelpView.showLoading("Loading···");
             }
             @Override
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
+                loadHelpView.dismiss();
             }
             @Override
             public boolean shouldOverrideKeyEvent(WebView view, KeyEvent event) {
@@ -77,12 +86,22 @@ public class WebViewActivity extends AppCompatActivity {
             }
             @Override
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
+                loadHelpView.showError(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                    }
+                });
                 super.onReceivedError(view, errorCode, description, failingUrl);
             }
         });
         mWebView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
+                loadHelpView.showLoading("Loading···"+ newProgress + "%");
+                if(newProgress==100){
+                    loadHelpView.dismiss();
+                }
                 super.onProgressChanged(view, newProgress);
 
             }

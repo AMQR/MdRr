@@ -1,5 +1,6 @@
 package com.am.mdrr;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,7 @@ public class RetrofitSimpleActivity extends AppCompatActivity{
     private TextView mTvGet;
     private TextView mTvData;
     private Toolbar mToolbar;
+    private TextView mTvTip;
 
 
     @Override
@@ -33,6 +35,18 @@ public class RetrofitSimpleActivity extends AppCompatActivity{
         mToolbar = (Toolbar) findViewById(R.id.mToolbar);
         mToolbar.setTitle("Retrofit Simple");
         setSupportActionBar(mToolbar);
+
+        mTvTip = (TextView) findViewById(R.id.mTvTip);
+        mTvTip.setText("OP 历史正文");
+        mTvTip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent openWeb = new Intent(RetrofitSimpleActivity.this,WebViewActivity.class);
+                openWeb.putExtra("Title","Retrofit");
+                openWeb.putExtra("LoadUrl","http://www.jianshu.com/p/c1b2af70f24b");
+                startActivity(openWeb);
+            }
+        });
 
         mTvGet = (TextView) findViewById(R.id.mTvGet);
         mTvData = (TextView) findViewById(R.id.mTvData);

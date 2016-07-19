@@ -8,7 +8,7 @@
         android:id="@+id/mTvRx"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Retrofit"
+        android:text="Retrofit示例"
         android:textSize="26sp"
         android:layout_centerInParent="true"
         />

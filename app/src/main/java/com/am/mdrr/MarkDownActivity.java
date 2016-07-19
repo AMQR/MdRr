@@ -21,7 +21,7 @@ import us.feras.mdv.MarkdownView;
 public class MarkDownActivity extends AppCompatActivity{
 
     private Toolbar toolbar;
-    private TextView mMdv;
+    private MarkedView mMdv;
     private Intent intent;
 
 
@@ -33,6 +33,7 @@ public class MarkDownActivity extends AppCompatActivity{
 
         toolbar = (Toolbar) findViewById(R.id.mToolbar);
         toolbar.setTitle(intent.getStringExtra("RxTitle"));
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
         ActionBar ab = getSupportActionBar();
         ab.setDisplayHomeAsUpEnabled(true);
@@ -53,7 +54,7 @@ public class MarkDownActivity extends AppCompatActivity{
         });
 
 
-        mMdv = (TextView) findViewById(R.id.mMdv);
-        mMdv.setText(intent.getStringExtra("MdTxt"));
+        mMdv = (MarkedView) findViewById(R.id.mMdv);
+        mMdv.setMDText(intent.getStringExtra("MdTxt"));
     }
 }

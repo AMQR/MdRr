@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,8 +28,10 @@ import com.am.mdrr.mdsimple.TextInputActivity;
 import com.am.mdrr.mdsimple.ThreeOneActivity;
 import com.am.mdrr.mdsimple.ToolbarActivity;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -65,57 +68,65 @@ public class RxFragment extends Fragment {
                     case 1:
                         Intent openMark1 = new Intent(getActivity(),MarkDownActivity.class);
                         openMark1.putExtra("RxTitle","Observer + Observable");
-                        openMark1.putExtra("MdTxt",getAsset("rx1.txt"));
+                        openMark1.putExtra("MdTxt",readFromAssetsTxt("rx1.txt"));
                         startActivity(openMark1);
                         break;
 
                     case 2:
                         Intent openMark2 = new Intent(getActivity(),MarkDownActivity.class);
                         openMark2.putExtra("RxTitle","Subscriber + Observable");
-                        openMark2.putExtra("MdTxt",getAsset("rx2.txt"));
+                        openMark2.putExtra("MdTxt",readFromAssetsTxt("rx2.txt"));
                         startActivity(openMark2);
                         break;
                     case 3:
                         Intent openMark3 = new Intent(getActivity(),MarkDownActivity.class);
                         openMark3.putExtra("RxTitle","快捷创建事件，just");
-                        openMark3.putExtra("MdTxt",getAsset("rx3.txt"));
+                        openMark3.putExtra("MdTxt",readFromAssetsTxt("rx3.txt"));
                         startActivity(openMark3);
                         break;
                     case 4:
                         Intent openMark4 = new Intent(getActivity(),MarkDownActivity.class);
                         openMark4.putExtra("RxTitle","快捷创建事件，from");
-                        openMark4.putExtra("MdTxt",getAsset("rx4.txt"));
+                        openMark4.putExtra("MdTxt",readFromAssetsTxt("rx4.txt"));
                         startActivity(openMark4);
                         break;
                     case 5:
                         Intent openMark5 = new Intent(getActivity(),MarkDownActivity.class);
                         openMark5.putExtra("RxTitle","不完整回调ActionX");
-                        openMark5.putExtra("MdTxt",getAsset("rx5.txt"));
+                        openMark5.putExtra("MdTxt",readFromAssetsTxt("rx5.txt"));
                         startActivity(openMark5);
                         break;
                     case 6:
                         Intent openMark6 = new Intent(getActivity(),MarkDownActivity.class);
                         openMark6.putExtra("RxTitle","Scheduler 调度器");
-                        openMark6.putExtra("MdTxt",getAsset("rx6.txt"));
+                        openMark6.putExtra("MdTxt",readFromAssetsTxt("rx6.txt"));
                         startActivity(openMark6);
                         break;
                     case 7:
                         Intent openMark7 = new Intent(getActivity(),MarkDownActivity.class);
                         openMark7.putExtra("RxTitle","Scheduler 切换线程");
-                        openMark7.putExtra("MdTxt",getAsset("rx7.txt"));
+                        openMark7.putExtra("MdTxt",readFromAssetsTxt("rx7.txt"));
                         startActivity(openMark7);
                         break;
                     case 8:
                         Intent openMark8 = new Intent(getActivity(),MarkDownActivity.class);
                         openMark8.putExtra("RxTitle","变换 入门");
-                        openMark8.putExtra("MdTxt",getAsset("rx8.txt"));
+                        openMark8.putExtra("MdTxt",readFromAssetsTxt("rx8.txt"));
                         startActivity(openMark8);
                         break;
                     case 9:
                         Intent openMark9 = new Intent(getActivity(),MarkDownActivity.class);
                         openMark9.putExtra("RxTitle","变换 flatMap");
-                        openMark9.putExtra("MdTxt",getAsset("rx9.txt"));
+                        openMark9.putExtra("MdTxt",readFromAssetsTxt("rx9.txt"));
                         startActivity(openMark9);
+                        break;
+
+                    case 10:
+                        Intent openWeb2 = new Intent(getActivity(),WebViewActivity.class);
+                        openWeb2.putExtra("Title","应用场景");
+                        openWeb2.putExtra("LoadUrl","http://blog.csdn.net/theone10211024/article/details/50435325");
+                        startActivity(openWeb2);
+
                         break;
 
                 }
@@ -143,6 +154,7 @@ public class RxFragment extends Fragment {
         addListData("Scheduler 切换线程");
         addListData("变换 入门");
         addListData("变换 flatMap");
+        addListData("应用场景");
     }
 
     private void addListData(String name){
@@ -153,15 +165,25 @@ public class RxFragment extends Fragment {
 
     }
 
-    private String getAsset(String fileName) {
-        AssetManager am = getResources().getAssets();
-        InputStream is = null;
+    private String readFromAssetsTxt(String name) {
         try {
-            is = am.open(fileName, AssetManager.ACCESS_BUFFER);
-        } catch (IOException e) {
+            AssetManager am = getResources().getAssets();
+            InputStream is = am.open(name);
+            InputStreamReader reader = new InputStreamReader(is);
+            BufferedReader bufferedReader = new BufferedReader(reader);
+            StringBuffer buffer = new StringBuffer("");
+            String str;
+            while ((str = bufferedReader.readLine()) != null) {
+                buffer.append(str);
+                buffer.append("\n");
+            }
+            return buffer.toString();
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        return new Scanner(is).useDelimiter("\\Z").next();
+        return null;
     }
+
 
 }

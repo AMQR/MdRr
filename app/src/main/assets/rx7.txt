@@ -12,3 +12,5 @@ Observable.just(1, 2, 3, 4) // IO 线程，由 subscribeOn() 指定
     .observeOn(AndroidSchedulers.mainThread)
     .subscribe(subscriber);  // Android 主线程，由 observeOn() 指定
 ```
+
+完

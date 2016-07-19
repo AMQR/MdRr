@@ -1,3 +1,4 @@
+```
 public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,9 +21,17 @@ public class MainActivity extends Activity {
         observable.subscribe(onNextAction);
     }
 }
+```
+
 =========
 打印结果：
+
 =======我是 Action1 onNextAction 不完整观察者 的 call: 任
+
 =======我是 Action1 onNextAction 不完整观察者 的 call: 性
+
 =======我是 Action1 onNextAction 不完整观察者 的 call: 被观察者
+
 =======我是 Action1 onNextAction 不完整观察者 的 call: 传入
+
+完

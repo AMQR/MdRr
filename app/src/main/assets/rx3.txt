@@ -1,3 +1,4 @@
+```
 public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +35,22 @@ public class MainActivity extends Activity {
         observable.subscribe(subscriber);
     }
 }
+```
+
 =============
 打印结果：
+
 =======我是观察者 Subscriber 特有的 onStart ，无参数
+
 =======我是观察者 Subscriber 的 onNext 事件，打印参数s：Hello
+
 =======我是观察者 Subscriber 的 onNext 事件，打印参数s：R
+
 =======我是观察者 Subscriber 的 onNext 事件，打印参数s：x
+
 =======我是观察者 Subscriber 的 onNext 事件，打印参数s：Java
+
 =======我是观察者 Subscriber 的 onCompleted 事件，无参数
+
+完
 
