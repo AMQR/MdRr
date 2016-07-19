@@ -295,7 +295,7 @@ Retrofit可以参考这里：
 ```
 
 
-![Re加Rx.gif](http://upload-images.jianshu.io/upload_images/1083096-72e0d624ac0332de.gif?imageMogr2/auto-orient/strip)
+![Re加Rx.gif](https://github.com/AMQR/TempPic/blob/master/images/MdRr/8.gif)
 
 
 
