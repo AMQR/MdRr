@@ -1,6 +1,3 @@
-
-# MdRr
-
 一个简单的小综合demo，分别演示：
 * Material Design
 * RxJava
@@ -300,5 +297,8 @@ Retrofit可以参考这里：
 
 ![Re加Rx.gif](http://upload-images.jianshu.io/upload_images/1083096-72e0d624ac0332de.gif?imageMogr2/auto-orient/strip)
 
+
+
+[项目地址](https://github.com/AMQR/MdRr)
 
 先这样，没事再完善。
