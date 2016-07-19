@@ -5,14 +5,14 @@
 * RxJava+Retrofit
 
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/1083096-ee33032d1d97d7ba.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Paste_Image.png](https://github.com/AMQR/TempPic/blob/master/images/MdRr/1.png)
 
 
 
 # 一、简单的小架子 
 
 
-![Paste_Image.png](http://upload-images.jianshu.io/upload_images/1083096-f2c20e93ae49f50d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![Paste_Image.png](https://github.com/AMQR/TempPic/blob/master/images/MdRr/2.png)
 
 
 布局文件
@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
 
 gif
 
-![小架子.gif](http://upload-images.jianshu.io/upload_images/1083096-33a4447826bc7941.gif?imageMogr2/auto-orient/strip)
+![小架子.gif](https://github.com/AMQR/TempPic/blob/master/images/MdRr/3.gif)
 
 
 # 二、 Md Widget
@@ -194,7 +194,7 @@ gif
 
 简图如下
 
-![MdShow.gif](http://upload-images.jianshu.io/upload_images/1083096-3718c87007f10d89.gif?imageMogr2/auto-orient/strip)
+![MdShow.gif](https://github.com/AMQR/TempPic/blob/master/images/MdRr/4.gif)
 
 注：
 关于RecyclerView没有单独开一个activity，但是其实列表本事就是RecyclerView了，想学参考可以参考这里：[RecyclerView良好参考](http://www.jianshu.com/p/b4d1bfd55ae9)
@@ -237,7 +237,7 @@ RxJava和Retrofit往往是一起使用的。
 gif
 
 
-![Rx.gif](http://upload-images.jianshu.io/upload_images/1083096-baa93a20a1c17958.gif?imageMogr2/auto-orient/strip)
+![Rx.gif](https://github.com/AMQR/TempPic/blob/master/images/MdRr/5.gif)
 
 RxJava可以参考这里：[旁边那门转左看到一个RxJava](http://www.jianshu.com/p/44d789d8c09c)
 
@@ -246,7 +246,7 @@ RxJava可以参考这里：[旁边那门转左看到一个RxJava](http://www.jia
 
 当前只做了一个示例，就是RxJava和Retrofit结合的获取天气的demo页面。
 
-![Retro.gif](http://upload-images.jianshu.io/upload_images/1083096-68df732e144af7f9.gif?imageMogr2/auto-orient/strip)
+![Retro.gif](https://github.com/AMQR/TempPic/blob/master/images/MdRr/6.gif)
 
 
 关键代码
@@ -278,7 +278,7 @@ RxJava可以参考这里：[旁边那门转左看到一个RxJava](http://www.jia
 ```
 
 
-![Retro.gif](http://upload-images.jianshu.io/upload_images/1083096-eeedd376e191afbb.gif?imageMogr2/auto-orient/strip)
+![Retro.gif](https://github.com/AMQR/TempPic/blob/master/images/MdRr/7.gif)
 
 Retrofit可以参考这里：
 [Retrofit应用小记](http://www.jianshu.com/p/c1b2af70f24b)
